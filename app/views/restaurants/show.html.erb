@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Yelp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <%= link_to "All restaurants", restaurants_path, class:"nav-link" %>
+      </div>
+    </div>
+  </div>
+</nav>
+<br>
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <br>
+  <div class="card p-3">
+
+   <h3>Information</h3>
+  <ul>
+      <li><strong>Address:</strong> <%= @restaurant.address %></li>
+      <li><strong>Phone number:</strong> <%= @restaurant.phone_number %></li>
+      <li><strong>Category:</strong> <%= @restaurant.category %></li>
+  </ul>
+
+</div>
+<br>
+  <div class="card p-3">
+
+  <div class="d-flex justify-content-between">
+    <h3>Reviews</h3>
+    <%= link_to "add", new_restaurant_review_path(@restaurant), class:"border border-primary rounded-circle p-3" %>
+  </div>
+   <ul>
+      <% @restaurant.reviews.each do |review| %>
+        <li><%= review.content %> (<%= review.rating %>/5)</li>
+      <% end %>
+   </ul>
+
+ </div>
+</div>
+
+
